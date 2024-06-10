@@ -42,7 +42,8 @@ namespace gestao_produtos.Infrastructures.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Cnpj")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(14)
+                        .HasColumnType("nvarchar(14)");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
@@ -51,10 +52,6 @@ namespace gestao_produtos.Infrastructures.Migrations
                         .HasColumnType("varchar(250)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Cnpj")
-                        .IsUnique()
-                        .HasFilter("[Cnpj] IS NOT NULL");
 
                     b.ToTable("Fornecedores");
                 });

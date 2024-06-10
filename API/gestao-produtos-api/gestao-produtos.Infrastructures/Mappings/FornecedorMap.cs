@@ -20,9 +20,9 @@ namespace gestao_produtos.Infrastructures.Mappings
                 .HasMaxLength(250)
                 .IsUnicode(false);
 
-            builder.Property(entity => entity.Cnpj);
-
-            builder.HasIndex(entity => entity.Cnpj).IsUnique();
+            builder
+                .Property(entity => entity.Cnpj)
+                .HasMaxLength(14);
 
             builder.HasMany(entity => entity.Produtos).WithMany(q => q.Fornecedores);
         }

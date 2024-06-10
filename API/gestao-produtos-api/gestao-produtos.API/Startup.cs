@@ -27,7 +27,21 @@ namespace gestao_produtos.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "gestao_produtos.api", Version = "v1" });
             });
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAngular",
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:4200")
+                               .AllowAnyOrigin()
+                               .AllowAnyHeader()
+                               .AllowAnyMethod();
+                    });
+            });
+
             services
+                .AddOptions()
                 .AddAppSettings(Configuration)
                 .AddApplication()
                 .AddInfrastructure()
@@ -47,6 +61,8 @@ namespace gestao_produtos.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("AllowAngular");
 
             app.UseAuthorization();
 

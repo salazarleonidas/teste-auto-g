@@ -9,19 +9,19 @@ namespace gestao_produtos.Application.DTO.ProtudoDtos
 {
     public class ProdutoInsertDto : BaseDto
     {
-        [JsonPropertyName("descricao_produto")]
+        [JsonPropertyName("descricao")]
         public string DescricaoProduto { get; set; }
 
-        [JsonPropertyName("situacao_produto")]
+        [JsonPropertyName("situacao")]
         public bool SituacaoProduto { get; set; }
 
-        [JsonPropertyName("data_fabricacao_produto")]
+        [JsonPropertyName("data_fabricacao")]
         public DateTime DataFabricacaoProduto { get; set; }
 
-        [JsonPropertyName("data_validade_produto")]
+        [JsonPropertyName("data_validade")]
         public DateTime DataValidadeProduto { get; set; }
 
-        [JsonPropertyName("fornecedores_produto")]
+        [JsonPropertyName("fornecedores")]
         public IEnumerable<FornecedorInsertProdutosDto> FornecedoresProduto { get; set; }
 
         public override async Task ValidateAsync()

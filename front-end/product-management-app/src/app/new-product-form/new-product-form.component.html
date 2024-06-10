@@ -1,0 +1,77 @@
+<h1 mat-dialog-title>{{data.product ? 'Editar Produto' : 'Novo Produto'}}</h1>
+<div mat-dialog-content>
+  <form [formGroup]="productForm">
+    <mat-form-field style="width: 100%;" *ngIf="isEdit">
+      <mat-label>Código</mat-label>
+      <input matInput formControlName="codigo" type="number">
+    </mat-form-field>
+    <mat-form-field style="width: 100%;">
+      <mat-label>Descrição</mat-label>
+      <input matInput formControlName="descricao">
+    </mat-form-field>
+    <mat-slide-toggle style="width: 20%;" formControlName="situacao">Situação</mat-slide-toggle>
+    <mat-form-field style="width: 40%;">
+      <mat-label>Data de Fabricação</mat-label>
+      <input matInput [matDatepicker]="picker1" formControlName="data_fabricacao">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field style="width: 40%;">
+      <mat-label>Data de Validade</mat-label>
+      <input matInput [matDatepicker]="picker2" formControlName="data_validade">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+    <div *ngIf="!showAddSupplierForm">
+      <h3>Fornecedores</h3>
+      <table mat-table [dataSource]="suppliers">
+        <ng-container matColumnDef="codigo" aria-disabled="true">
+          <th mat-header-cell *matHeaderCellDef> Código </th>
+          <td mat-cell *matCellDef="let supplier"> {{supplier.codigo}} </td>
+        </ng-container>
+        <ng-container matColumnDef="descricao">
+          <th mat-header-cell *matHeaderCellDef> Descrição </th>
+          <td mat-cell *matCellDef="let supplier"> {{supplier.descricao}} </td>
+        </ng-container>
+        <ng-container matColumnDef="cnpj">
+          <th mat-header-cell *matHeaderCellDef> CNPJ </th>
+          <td mat-cell *matCellDef="let supplier"> {{supplier.cnpj}} </td>
+        </ng-container>
+        <ng-container matColumnDef="acoes">
+          <th mat-header-cell *matHeaderCellDef> Ações </th>
+          <td mat-cell *matCellDef="let supplier">
+            <button mat-icon-button (click)="deleteSupplier(supplier.cnpj)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="supplierColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: supplierColumns;"></tr>
+      </table>
+      <button mat-raised-button color="primary" class="align-right-button" (click)="toggleAddSupplierForm()">Adicionar Fornecedor</button>
+    </div>
+    <div *ngIf="showAddSupplierForm">
+      <!-- Supplier form -->
+      <form [formGroup]="supplierForm">
+        <mat-form-field appearance="fill" style="width: 50%;">
+          <mat-label>Descrição</mat-label>
+          <input matInput formControlName="descricao" placeholder="Descrição do fornecedor">
+        </mat-form-field>
+    
+        <mat-form-field appearance="fill" style="width: 50%;">
+          <mat-label>CNPJ</mat-label>
+          <input matInput formControlName="cnpj" placeholder="CNPJ do fornecedor">
+        </mat-form-field>
+        <div style="display: flex; justify-content:flex-end;">
+          <button mat-stroked-button color="warn" (click)="cancelAddSupplier()">Cancel</button>
+          <button mat-stroked-button color="primary" (click)="addSupplier()">Save</button>
+        </div>
+      </form>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions style="display: flex; justify-content:flex-end;">
+  <button mat-flat-button color="warn" (click)="onCancel()">Cancelar</button>
+  <button mat-flat-button color="primary" (click)="onSave()">Salvar</button>
+</div>
