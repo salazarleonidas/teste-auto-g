@@ -33,8 +33,7 @@ namespace gestao_produtos.API
                 options.AddPolicy("AllowAngular",
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:4200")
-                               .AllowAnyOrigin()
+                        builder.AllowAnyOrigin()
                                .AllowAnyHeader()
                                .AllowAnyMethod();
                     });

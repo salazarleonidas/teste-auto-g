@@ -1,4 +1,5 @@
 ﻿using gestao_produtos.Domain.DTO.FornecedorDtos;
+using gestao_produtos.Domain.Validators;
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
