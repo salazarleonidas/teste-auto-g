@@ -4,7 +4,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Threading.Tasks;
 
-namespace gestao_produtos.Application.Validators
+namespace gestao_produtos.Domain.Validators
 {
     internal class BaseValidator
     {

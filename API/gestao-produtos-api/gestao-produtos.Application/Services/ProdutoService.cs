@@ -1,10 +1,10 @@
 ﻿using Ardalis.Result;
 using Ardalis.Result.FluentValidation;
 using AutoMapper;
-using gestao_produtos.Application.DTO.ProtudoDtos;
-using gestao_produtos.Application.Interfaces;
+using gestao_produtos.Domain.DTO.ProtudoDtos;
+using gestao_produtos.Domain.Interfaces.Repositories;
+using gestao_produtos.Domain.Interfaces.Services;
 using gestao_produtos.Domain.Models;
-using gestao_produtos.Domain.Repositories;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

@@ -1,8 +1,8 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace gestao_produtos.Application.DTO.FornecedorDtos
+namespace gestao_produtos.Domain.DTO.FornecedorDtos
 {
-    public class FornecedorUpdateProdutosDto
+    public class FornecedorProdutosDto
     {
         [JsonPropertyName("codigo")]
         public long CodigoFornecedor { get; set; }

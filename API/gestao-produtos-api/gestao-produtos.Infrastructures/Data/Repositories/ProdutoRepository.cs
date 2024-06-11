@@ -1,5 +1,5 @@
-﻿using gestao_produtos.Domain.Models;
-using gestao_produtos.Domain.Repositories;
+﻿using gestao_produtos.Domain.Interfaces.Repositories;
+using gestao_produtos.Domain.Models;
 using gestao_produtos.Infrastructures.Data.Common;
 using gestao_produtos.Infrastructures.Data.Context;
 using Microsoft.EntityFrameworkCore;

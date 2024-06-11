@@ -1,4 +1,4 @@
-﻿using gestao_produtos.Domain.Repositories;
+﻿using gestao_produtos.Domain.Interfaces.Repositories;
 using gestao_produtos.Infrastructures.Data.Context;
 using gestao_produtos.Infrastructures.Data.Repositories;
 using Microsoft.EntityFrameworkCore;

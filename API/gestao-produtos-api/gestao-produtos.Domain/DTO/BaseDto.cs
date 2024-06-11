@@ -1,8 +1,7 @@
-﻿using FluentValidation.Results;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace gestao_produtos.Application.DTO
+namespace gestao_produtos.Domain.DTO
 {
     public abstract class BaseDto
     {

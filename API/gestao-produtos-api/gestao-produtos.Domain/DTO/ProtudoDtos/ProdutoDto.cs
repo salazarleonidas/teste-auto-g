@@ -1,11 +1,10 @@
-﻿using gestao_produtos.Application.DTO.FornecedorDtos;
-using gestao_produtos.Application.Validators;
+﻿using gestao_produtos.Domain.DTO.FornecedorDtos;
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace gestao_produtos.Application.DTO.ProtudoDtos
+namespace gestao_produtos.Domain.DTO.ProtudoDtos
 {
     public class ProdutoDto : BaseDto
     {

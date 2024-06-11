@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using gestao_produtos.Application.DTO.FornecedorDtos;
-using gestao_produtos.Application.DTO.ProtudoDtos;
+using gestao_produtos.Domain.DTO.FornecedorDtos;
+using gestao_produtos.Domain.DTO.ProtudoDtos;
 using gestao_produtos.Domain.Models;
 using System.Text.RegularExpressions;
 

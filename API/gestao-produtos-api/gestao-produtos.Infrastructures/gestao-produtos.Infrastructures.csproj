@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\gestao-produtos.Application\gestao-produtos.Application.csproj" />
     <ProjectReference Include="..\gestao-produtos.Domain\gestao-produtos.Domain.csproj" />
   </ItemGroup>
 

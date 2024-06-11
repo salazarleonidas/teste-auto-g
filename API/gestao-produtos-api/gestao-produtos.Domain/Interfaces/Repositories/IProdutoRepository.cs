@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace gestao_produtos.Domain.Repositories
+namespace gestao_produtos.Domain.Interfaces.Repositories
 {
     public interface IProdutoRepository
     {

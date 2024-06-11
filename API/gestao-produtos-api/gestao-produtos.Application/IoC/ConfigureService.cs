@@ -1,6 +1,6 @@
-﻿using gestao_produtos.Application.Interfaces;
-using gestao_produtos.Application.Mapper;
+﻿using gestao_produtos.Application.Mapper;
 using gestao_produtos.Application.Services;
+using gestao_produtos.Domain.Interfaces.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System.Diagnostics.CodeAnalysis;
 

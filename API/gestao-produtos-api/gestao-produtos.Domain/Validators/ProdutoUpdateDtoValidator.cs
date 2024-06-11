@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using gestao_produtos.Application.DTO.ProtudoDtos;
+using gestao_produtos.Domain.DTO.ProtudoDtos;
 
-namespace gestao_produtos.Application.Validators
+namespace gestao_produtos.Domain.Validators
 {
     internal class ProdutoUpdateDtoValidator : AbstractValidator<ProdutoUpdateDto>
     {

@@ -1,17 +1,13 @@
-﻿using gestao_produtos.Application.DTO.FornecedorDtos;
-using gestao_produtos.Application.Validators;
+﻿using gestao_produtos.Domain.DTO.FornecedorDtos;
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace gestao_produtos.Application.DTO.ProtudoDtos
+namespace gestao_produtos.Domain.DTO.ProtudoDtos
 {
-    public class ProdutoUpdateDto : BaseDto
+    public class ProdutoInsertDto : BaseDto
     {
-        [JsonPropertyName("codigo")]
-        public long CodigoProduto { get; set; }
-
         [JsonPropertyName("descricao")]
         public string DescricaoProduto { get; set; }
 
@@ -25,9 +21,9 @@ namespace gestao_produtos.Application.DTO.ProtudoDtos
         public DateTime DataValidadeProduto { get; set; }
 
         [JsonPropertyName("fornecedores")]
-        public IEnumerable<FornecedorUpdateProdutosDto> FornecedoresProduto { get; set; }
+        public IEnumerable<FornecedorInsertProdutosDto> FornecedoresProduto { get; set; }
 
         public override async Task ValidateAsync()
-            => ValidationResult = await BaseValidator.ValidateAsync<ProdutoUpdateDtoValidator, ProdutoUpdateDto>(this);
+            => ValidationResult = await BaseValidator.ValidateAsync<ProdutoInsertDtoValidator, ProdutoInsertDto>(this);
     }
 }

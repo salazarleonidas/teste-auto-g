@@ -1,9 +1,9 @@
 ﻿using Ardalis.Result;
-using gestao_produtos.Application.DTO.ProtudoDtos;
+using gestao_produtos.Domain.DTO.ProtudoDtos;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace gestao_produtos.Application.Interfaces
+namespace gestao_produtos.Domain.Interfaces.Services
 {
     public interface IProdutoService
     {

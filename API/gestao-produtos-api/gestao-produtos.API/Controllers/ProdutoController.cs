@@ -1,7 +1,7 @@
 ﻿using gestao_produtos.api.Extensions;
 using gestao_produtos.api.Models;
-using gestao_produtos.Application.DTO.ProtudoDtos;
-using gestao_produtos.Application.Interfaces;
+using gestao_produtos.Domain.DTO.ProtudoDtos;
+using gestao_produtos.Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
