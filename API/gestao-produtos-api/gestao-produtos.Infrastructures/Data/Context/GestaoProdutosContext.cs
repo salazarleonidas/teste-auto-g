@@ -1,6 +1,7 @@
 ﻿using gestao_produtos.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using System.Reflection;
 
@@ -24,6 +25,7 @@ namespace gestao_produtos.Infrastructures.Data.Context
         public DbSet<Produto> Produtos => Set<Produto>();
         public DbSet<Fornecedor> Fornecedores => Set<Fornecedor>();
 
+        [ActivatorUtilitiesConstructor]
         public GestaoProdutosContext(DbContextOptions<GestaoProdutosContext> dbOptions) : base(dbOptions) { }
 
         public GestaoProdutosContext(IOptions<ConnectionStrings> options, DbContextOptions<GestaoProdutosContext> dbOptions)

@@ -4,13 +4,13 @@ namespace gestao_produtos.Application.DTO.FornecedorDtos
 {
     public class FornecedorInsertProdutosDto
     {
-        [JsonPropertyName("codigo_fornecedor")]
+        [JsonPropertyName("codigo")]
         public long? CodigoFornecedor { get; set; }
 
-        [JsonPropertyName("descricao_fornecedor")]
+        [JsonPropertyName("descricao")]
         public string DescricaoFornecedor { get; set; }
 
-        [JsonPropertyName("cnpj_fornecedor")]
+        [JsonPropertyName("cnpj")]
         public string CnpjFornecedor { get; set; }
     }
 }

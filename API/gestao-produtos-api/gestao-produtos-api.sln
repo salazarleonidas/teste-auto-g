@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gestao-produtos.Domain", "g
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gestao-produtos.Infrastructures", "gestao-produtos.Infrastructures\gestao-produtos.Infrastructures.csproj", "{7A41E5CB-A692-403F-8838-071048E525C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gestao-produtos.Application", "gestao-produtos.Application\gestao-produtos.Application.csproj", "{7C57A6A9-E09A-4A06-9952-DB5502B1A1A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gestao-produtos.Application", "gestao-produtos.Application\gestao-produtos.Application.csproj", "{7C57A6A9-E09A-4A06-9952-DB5502B1A1A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gestao_produtos.tests", "..\tests\gestao_produtos.tests\gestao_produtos.tests.csproj", "{44F28F61-6ACA-46BB-98AD-3F025A14B019}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{7C57A6A9-E09A-4A06-9952-DB5502B1A1A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C57A6A9-E09A-4A06-9952-DB5502B1A1A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C57A6A9-E09A-4A06-9952-DB5502B1A1A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44F28F61-6ACA-46BB-98AD-3F025A14B019}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44F28F61-6ACA-46BB-98AD-3F025A14B019}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44F28F61-6ACA-46BB-98AD-3F025A14B019}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44F28F61-6ACA-46BB-98AD-3F025A14B019}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

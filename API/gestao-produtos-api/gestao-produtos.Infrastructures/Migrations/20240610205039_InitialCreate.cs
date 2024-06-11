@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace gestao_produtos.Infrastructures.Migrations
 {
@@ -14,7 +14,7 @@ namespace gestao_produtos.Infrastructures.Migrations
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Descricao = table.Column<string>(type: "varchar(250)", unicode: false, maxLength: 250, nullable: false),
-                    Cnpj = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    Cnpj = table.Column<string>(type: "nvarchar(14)", maxLength: 14, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -60,13 +60,6 @@ namespace gestao_produtos.Infrastructures.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Fornecedores_Cnpj",
-                table: "Fornecedores",
-                column: "Cnpj",
-                unique: true,
-                filter: "[Cnpj] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_FornecedorProduto_ProdutosId",

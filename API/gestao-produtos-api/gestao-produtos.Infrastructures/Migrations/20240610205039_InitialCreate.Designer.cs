@@ -10,7 +10,7 @@ using gestao_produtos.Infrastructures.Data.Context;
 namespace gestao_produtos.Infrastructures.Migrations
 {
     [DbContext(typeof(GestaoProdutosContext))]
-    [Migration("20240609010932_InitialCreate")]
+    [Migration("20240610205039_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,7 +44,8 @@ namespace gestao_produtos.Infrastructures.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Cnpj")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(14)
+                        .HasColumnType("nvarchar(14)");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
@@ -53,10 +54,6 @@ namespace gestao_produtos.Infrastructures.Migrations
                         .HasColumnType("varchar(250)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Cnpj")
-                        .IsUnique()
-                        .HasFilter("[Cnpj] IS NOT NULL");
 
                     b.ToTable("Fornecedores");
                 });

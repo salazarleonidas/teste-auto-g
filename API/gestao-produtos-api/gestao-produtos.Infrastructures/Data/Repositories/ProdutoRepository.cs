@@ -15,11 +15,28 @@ namespace gestao_produtos.Infrastructures.Data.Repositories
 
         public async Task<bool> AtualizarAsync(Produto obj)
         {
-            var entity = await DbSet.FirstOrDefaultAsync(q => q.Id == obj.Id);
+            var entity = await DbSet.Include(c => c.Fornecedores).FirstOrDefaultAsync(q => q.Id == obj.Id);
 
             if (entity == null) return false;
 
             _context.Entry(entity).CurrentValues.SetValues(obj);
+
+            foreach (var fornecedor in entity.Fornecedores.ToList())
+                if (!obj.Fornecedores.Any(c => c.Id == fornecedor.Id))
+                    _context.Fornecedores.Remove(fornecedor);
+
+            foreach (var fornecedor in obj.Fornecedores)
+            {
+                var existingFornecedor = entity.Fornecedores
+                    .Where(c => c.Id == fornecedor.Id && c.Id != default(int))
+                    .SingleOrDefault();
+
+                if (existingFornecedor != null)
+                    _context.Entry(existingFornecedor).CurrentValues.SetValues(fornecedor);
+                else
+                    entity.Fornecedores.Add(fornecedor);
+            }
+
             _context.SaveChanges();
 
             return true;
@@ -57,6 +74,7 @@ namespace gestao_produtos.Infrastructures.Data.Repositories
             => await DbSet
                 .AsNoTrackingWithIdentityResolution()
                 .Include(e => e.Fornecedores)
+                .Where(q => q.Situacao)
                 .OrderBy(e => e.Id)
                 .ToListAsync();
     }
