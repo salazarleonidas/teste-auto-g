@@ -62,11 +62,11 @@ namespace gestao_produtos.Application.Services
                                      Result.Error($"Erro ao nuscar produto {produto.Descricao}");
         }
 
-        public async Task<Result<IEnumerable<ProdutoDto>>> ObterProdutos()
+        public async Task<Result<Domain.Models.PagedResult<ProdutoDto>>> ObterProdutos(int? page, int pagesize = 10)
         {
-            var produtos = await _produtoRepository.ObterProdutos();
-            return produtos.Any() ?
-                    Result.Success(_mapper.Map<IEnumerable<ProdutoDto>>(produtos)) :
+            var produtos = await _produtoRepository.ObterProdutos(page, pagesize);
+            return produtos.Items.Any() ?
+                    Result.Success(_mapper.Map<Domain.Models.PagedResult<ProdutoDto>>(produtos)) :
                     Result.NoContent();
         }
     }

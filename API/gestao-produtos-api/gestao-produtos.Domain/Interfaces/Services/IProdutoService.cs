@@ -11,6 +11,6 @@ namespace gestao_produtos.Domain.Interfaces.Services
         Task<Result<bool>> Delete(long id);
         Task<Result<long>> Inserir(ProdutoInsertDto produto);
         Task<Result<ProdutoDto>> ObterProdutoById(long id);
-        Task<Result<IEnumerable<ProdutoDto>>> ObterProdutos();
+        Task<Result<Models.PagedResult<ProdutoDto>>> ObterProdutos(int? page, int pagesize);
     }
 }

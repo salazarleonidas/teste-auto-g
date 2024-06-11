@@ -2,6 +2,7 @@
 using gestao_produtos.api.Models;
 using gestao_produtos.Domain.DTO.ProtudoDtos;
 using gestao_produtos.Domain.Interfaces.Services;
+using gestao_produtos.Domain.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -38,12 +39,12 @@ namespace gestao_produtos.API.Controllers
         [HttpGet]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(ApiResponse<IEnumerable<ProdutoDto>>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse<PagedResult<ProdutoDto>>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetAll()
-            => (await _produtoService.ObterProdutos()).ToActionResult();
+        public async Task<IActionResult> GetAll(int? page, int size)
+            => (await _produtoService.ObterProdutos(page, size)).ToActionResult();
 
         [HttpPost]
         [Consumes(MediaTypeNames.Application.Json)]

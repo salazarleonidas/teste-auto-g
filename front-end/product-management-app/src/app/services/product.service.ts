@@ -22,8 +22,8 @@ export class ProductService {
     };
    }
 
-  getProducts(): Observable<ResponseModel> {
-    return this.http.get<ResponseModel>(`${this.apiUrl}/produto`, {headers: this.httpOptions.headers});
+  getProducts(pageNumber: number, pageSize: number): Observable<ResponseModel> {
+    return this.http.get<ResponseModel>(`${this.apiUrl}/produto?page=${pageNumber}&size=${pageSize}`, {headers: this.httpOptions.headers});
   }
 
   getProductById(codigo: number): Observable<ResponseModel> {
