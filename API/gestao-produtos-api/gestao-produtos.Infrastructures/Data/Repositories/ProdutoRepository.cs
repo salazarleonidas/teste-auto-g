@@ -70,12 +70,24 @@ namespace gestao_produtos.Infrastructures.Data.Repositories
                 .Include(c => c.Fornecedores)
                 .FirstOrDefaultAsync(c => c.Id == id);
 
-        public async Task<IEnumerable<Produto>> ObterProdutos()
-            => await DbSet
+        public async Task<PagedResult<Produto>> ObterProdutos(int? page, int pagesize)
+        {
+            var count = await DbSet.CountAsync(q => q.Situacao);
+            var list = await DbSet
                 .AsNoTrackingWithIdentityResolution()
                 .Include(e => e.Fornecedores)
                 .Where(q => q.Situacao)
                 .OrderBy(e => e.Id)
+                .Skip((page ?? 0) * pagesize)
+                .Take(pagesize)
                 .ToListAsync();
+            return new PagedResult<Produto>()
+            {
+                Count = count,
+                PageIndex = page ?? 1,
+                PageSize = pagesize,
+                Items = list
+            };
+        }
     }
 }

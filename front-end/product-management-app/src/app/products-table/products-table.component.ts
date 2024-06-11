@@ -1,28 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductService } from '../services/product.service';
 import { NewProductFormComponent } from '../new-product-form/new-product-form.component';
 import { Product } from '../models/product';
+import { PageResult } from '../models/page-result';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-products-table',
   templateUrl: './products-table.component.html',
-  styleUrls: ['./products-table.component.scss']
+  styleUrls: ['./products-table.component.scss']  
 })
 export class ProductsTableComponent implements OnInit {
   displayedColumns: string[] = ['codigo', 'descricao', 'situacao', 'dataFabricacao', 'dataValidade', 'acoes'];
-  products: Product[] = [];
+  dataSource = new MatTableDataSource<Product>([]);
 
-  constructor(private productService: ProductService, private dialog: MatDialog) { }
+  pageSize: number = 3;
+  totalProducts = 0;
+  pageEvent!: PageEvent;
+
+  constructor(private productService: ProductService, private dialog: MatDialog)
+  {
+
+  }
 
   ngOnInit(): void {
     this.loadProducts();
   }
 
   loadProducts(): void {
-    this.productService.getProducts().subscribe((response) => {
+    const pageIndex = this.pageEvent ? this.pageEvent.pageIndex : 1;
+    const pageSize = this.pageEvent ? this.pageEvent.pageSize : this.pageSize;
+
+    this.productService.getProducts(pageIndex, pageSize).subscribe((response) => {
       if(response.statusCode == 200){
-        this.products = response.result;
+        this.dataSource.data = response.result.items;
+        this.totalProducts = response.result.count;
       }
     });
   }

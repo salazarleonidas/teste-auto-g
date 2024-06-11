@@ -9,7 +9,7 @@ namespace gestao_produtos.Domain.Interfaces.Repositories
         Task<bool> AtualizarAsync(Produto obj);
         Task<bool> DeleteAsync(long id);
         Task<long> InserirAsync(Produto obj);
-        Task<IEnumerable<Produto>> ObterProdutos();
+        Task<PagedResult<Produto>> ObterProdutos(int? page, int pagesize);
         Task<Produto> ObterProdutoById(long id);
     }
 }

@@ -66,6 +66,9 @@ namespace gestao_produtos.Application.Mapper
                 .ForMember(q => q.Id, opt => opt.MapFrom(src => src.CodigoFornecedor))
                 .ForMember(q => q.Descricao, opt => opt.MapFrom(src => src.DescricaoFornecedor))
                 .AfterMap((s, d) => d.Cnpj = Regex.Replace(s.CnpjFornecedor, "[^0-9]", string.Empty));
+
+
+            CreateMap<PagedResult<ProdutoDto>, PagedResult<Produto>>(MemberList.Source).ReverseMap();
         }
     }
 }
